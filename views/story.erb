@@ -1,0 +1,23 @@
+<h2> <%= @fable[0]['title'] %> </h2>
+
+<% @posts.each do |post| %>
+  <a href="/<%=@fable[0]['id']%>/<%=post['id']%>">
+    <div class="post">
+      <p class="post_text"><%= post['message'] %></p>
+    </div>
+  </a>
+<% end %>
+
+<form class="post" action="" method="post">
+
+    <div>
+      <h3><label for="message">Add to the story: </label></h3>
+      <textarea name="message"></textarea>
+    </div>
+
+    <div class="button">
+      <input type="submit" value="Submit" />
+    </div>
+
+</form>
+

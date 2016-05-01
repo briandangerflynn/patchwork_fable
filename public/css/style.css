@@ -1,0 +1,113 @@
+body{
+  padding:0;
+  margin: 0;
+  font-family: "cardo";
+}
+
+.container {
+  margin: 0 auto;
+  background-color: #f4decb;
+  height: 1200px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* styles for top nav bar */
+nav {
+  margin-top: 0;
+  height: 50px;
+  background-color: #49274A;
+}
+
+.top-nav li {
+  float: left;
+  margin-left: 15px;
+  list-style: none;
+
+}
+
+.top-nav a {
+  color: white;
+}
+
+nav ul {
+  float: right;
+  margin-right: 15px;
+}
+
+/* styles for header */
+
+header {
+  /* border-top: 3px solid white; */
+  height: 250px;
+  background-color: #94618e;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  font-family: '1 Harrington M', arial, serif;
+  font-size: 96px;
+  font-weight: bold;
+  padding-top: 40px;
+  color: white;
+}
+
+h4 {
+  color: #49274A;
+  font-size: 36px;
+  margin-top: 0px;
+}
+
+/* styles for main section */
+
+main {
+  /* border-top: 3px solid white; */
+  text-align: center;
+}
+
+
+/* styles for posts */
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  color: #49274A;
+}
+
+.post {
+  padding: 5px;
+  width: 50%;
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.post_text {
+  margin-left: 5px;
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+}
+
+/* styles for buttons */
+
+.button {
+  margin-bottom: 20px;
+}
+
+#create-story {
+  margin-top: 20px;
+}
+
+/* styles for links */
+
+a {
+  text-decoration: none;
+}
+
+

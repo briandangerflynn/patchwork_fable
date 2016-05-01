@@ -1,0 +1,30 @@
+<h2>Top Stories</h2>
+
+<% @fables.each do |fable| %>
+  <div class="title">
+    <a href="/<%= fable['id']%>">
+      <h3 class="title_text"><%= fable['title'] %></h3>
+    </a>
+  </div>
+<% end %>
+
+<form class="post" action="" method="post">
+
+    <div>
+      <h3>Create a new story:</h3>
+      <label for="title">title: </label>
+      <input type="text" name="title" />
+    </div>
+
+    <div id="create-story" class="button">
+      <input type="submit" value="Create" />
+    </div>
+
+</form>
+
+
+
+
+
+
+

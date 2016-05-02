@@ -1,6 +1,6 @@
 require 'pg'
 require "pry"
-require "better_errors"
+# require "better_errors"
 
 
 module Patchwork
@@ -10,10 +10,10 @@ module Patchwork
     set :sessions, true
 
 
-    configure :development do
-      use BetterErrors::Middleware
-      BetterErrors.application_root = __dir__
-    end
+    # configure :development do
+    #   use BetterErrors::Middleware
+    #   BetterErrors.application_root = __dir__
+    # end
 
     helpers do
 

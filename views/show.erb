@@ -2,7 +2,7 @@
 
 <div class="post">
   <p><%= @post[0]['message'] %></p>
-  <p>Written by: <%= @post[0]['author'] %></p>
+  <p>Written by: <a href="/profile/<%= @post[0]['author'] %>"><%= @post[0]['author'] %></a></p>
 </div>
 
 <% if login? %>

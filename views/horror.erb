@@ -7,7 +7,7 @@
 <a href="/scifi">Sci-fi</a>
 
 <% if @fables.length == 0 %>
-  <p>No horrors yet.</p>
+  <p class="post">No horrors yet.</p>
 <% else %>
 
 <% @fables.each do |fable| %>
@@ -16,7 +16,7 @@
     <a href="/<%= fable['id']%>"><h3 class="title_text"><%= fable['title'] %></h3></a>
     <p>by <a href="/profile/<%= fable['author'] %>"><%= fable['author'] %></p></a>
     <hr>
-    <p><%= fable['description'] %></p>
+    <p class="post-text"><%= fable['description'] %></p>
   </div>
 <% end %>
 

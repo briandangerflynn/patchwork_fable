@@ -208,7 +208,7 @@ module Patchwork
                 user: ENV["POSTGRES_USER"]
              )
         else
-            PG.connect(dbname: "patchwork")
+            @db||= PG.connect(dbname: "patchwork")
         end
     end
 

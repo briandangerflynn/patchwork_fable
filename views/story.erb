@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
   <a href="/<%=@fable[0]['id']%>/<%=post['id']%>">
     <div class="post">
-      <p class="post_text"><%= post['message'] %></p>
+      <p class="post-text"><%= post['message'] %></p>
     </div>
   </a>
 <% end %>

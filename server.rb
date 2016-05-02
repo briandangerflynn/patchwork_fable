@@ -90,7 +90,7 @@ module Patchwork
 # shows titles of stories
 
     get "/" do
-      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username;")
+      @fables = conn.exec("SELECT * FROM fable;")
 
       erb :index
     end
@@ -126,8 +126,8 @@ module Patchwork
     end
 
 # view sci-fi fables
-    get "/sci-fi" do
-      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'sci-fi';").to_a
+    get "/scifi" do
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'scifi';").to_a
       erb :scifi
     end
 

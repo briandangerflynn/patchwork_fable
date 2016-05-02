@@ -1,12 +1,14 @@
 require 'pg'
 require "pry"
 require "better_errors"
-require "bcrypt"
+
 
 module Patchwork
+  require "bcrypt"
   class Server < Sinatra::Base
     set :method_override, true
     set :sessions, true
+
 
     configure :development do
       use BetterErrors::Middleware

@@ -2,8 +2,10 @@
 
 <% @fables.each do |fable| %>
   <div class="post">
+
     <a href="/<%= fable['id']%>"><h3 class="title_text"><%= fable['title'] %></h3></a>
-    <p>Created by: <a href="/profile/<%= fable['author'] %>"><%= fable['author'] %></p></a>
+    <p>by <a href="/profile/<%= fable['author'] %>"><%= fable['author'] %></p></a>
+    <hr>
     <p><%= fable['description'] %></p>
   </div>
 <% end %>
@@ -21,6 +23,16 @@
       <div>
         <label for="description">description: </label>
         <textarea name="description"></textarea>
+      </div>
+
+      <div>
+        <label for="category">category: </label>
+        <select name="category">
+          <option value="comedy">comedy</option>
+          <option value="horror">horror</option>
+          <option value="fantasy">fantasy</option>
+          <option value="sci-fi">sci-fi</option>
+        </select>
       </div>
 
       <div id="create-story" class="button">

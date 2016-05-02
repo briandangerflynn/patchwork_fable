@@ -2,14 +2,15 @@ body{
   padding:0;
   margin: 0;
   font-family: "cardo";
+  background-color: #f4decb;
 }
 
 .container {
   margin: 0 auto;
+  height: 100%;
   background-color: #f4decb;
-  height: 1200px;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 100px;
 }
 
 /* styles for top nav bar */
@@ -84,6 +85,10 @@ h2 {
   margin-top: 20px;
   background-color: white;
   border-radius: 10px;
+}
+
+hr {
+  width: 40%;
 }
 
 .post_text {

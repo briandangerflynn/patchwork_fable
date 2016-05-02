@@ -33,7 +33,8 @@ conn.exec("CREATE TABLE fable(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     author VARCHAR(255),
-    description TEXT NOT NULL
+    description TEXT NOT NULL,
+    category VARCHAR(255)
   )"
 )
 # end
@@ -52,25 +53,26 @@ conn.exec("CREATE TABLE posts(
 
 # creates fake data for production testing
 conn.exec("INSERT INTO user_info (username, password, email) VALUES (
-    'Brian',
+    'Brian Danger',
     'password',
     'bdflynny@gmail.com'
   )"
 )
 
-conn.exec("INSERT INTO fable (title, author, description) VALUES (
+conn.exec("INSERT INTO fable (title, author, description, category) VALUES (
     'Dragon Story',
-    'Brian',
-    'A story about a fat dragon'
+    'Brian Danger',
+    'A story about a fat dragon',
+    'fantasy'
   )"
 )
 
 conn.exec("INSERT INTO posts (author, message, fable_id) VALUES (
-    'Brian',
+    'Brian Danger',
     'Once upon a time, there was a lazy dragon...',
     1
   ),(
-    'Brian',
+    'Brian Danger',
     'that dragon liked to eat ramen noodles until he fell asleep!',
     1
   )"

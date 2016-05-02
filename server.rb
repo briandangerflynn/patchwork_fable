@@ -101,7 +101,8 @@ module Patchwork
       @username = username
       @new_story = params[:title]
       @description = params[:description]
-      conn.exec_params("INSERT INTO fable (title, description, author) VALUES ($1, $2, $3)", [@new_story, @description, @username])
+      @category = params[:category]
+      conn.exec_params("INSERT INTO fable (title, description, author, category) VALUES ($1, $2, $3, $4)", [@new_story, @description, @username, @category])
       @submitted = true
       redirect to("/")
     end

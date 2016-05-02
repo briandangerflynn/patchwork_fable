@@ -1,26 +1,37 @@
 <h2>Top Stories</h2>
 
 <% @fables.each do |fable| %>
-  <div class="title">
-    <a href="/<%= fable['id']%>">
-      <h3 class="title_text"><%= fable['title'] %></h3>
-    </a>
+  <div class="post">
+    <a href="/<%= fable['id']%>"><h3 class="title_text"><%= fable['title'] %></h3></a>
+    <p>Created by: <a href="/profile/<%= fable['author'] %>"><%= fable['author'] %></p></a>
+    <p><%= fable['description'] %></p>
   </div>
 <% end %>
 
-<form class="post" action="" method="post">
+<% if login? %>
 
-    <div>
-      <h3>Create a new story:</h3>
-      <label for="title">title: </label>
-      <input type="text" name="title" />
-    </div>
+  <form class="post" action="" method="post">
 
-    <div id="create-story" class="button">
-      <input type="submit" value="Create" />
-    </div>
+      <div>
+        <h3>Create a new story:</h3>
+        <label for="title">title: </label>
+        <input type="text" name="title" />
+      </div>
+      <br>
+      <div>
+        <label for="description">description: </label>
+        <textarea name="description"></textarea>
+      </div>
 
-</form>
+      <div id="create-story" class="button">
+        <input type="submit" value="Create" />
+      </div>
+
+  </form>
+
+<% else %>
+  <a href="/login" class="login-button">Log in to create a new story</a>
+<% end %>
 
 
 

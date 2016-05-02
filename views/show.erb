@@ -1,29 +1,35 @@
+<h2>Return to <a href="/<%= @story[0]['id']%>"><%= @story[0]['title'] %></a></h2>
+
 <div class="post">
   <p><%= @post[0]['message'] %></p>
+  <p>Written by: <%= @post[0]['author'] %></p>
 </div>
 
+<% if login? %>
+  <div class="post">
+    <form action='' method='POST'>
+      <input type="hidden" name="_method" value="PUT">
+      <input type='hidden' name='post_id' value='<%= @post_id %>'>
+      <div>
+        <h3><label for="message">Edit this post: </label></h3>
+        <textarea name="message"></textarea>
+      </div>
 
-<div class="post">
-<form action='' method='POST'>
-  <input type="hidden" name="_method" value="PUT">
-  <input type='hidden' name='post_id' value='<%= @post_id %>'>
-  <div>
-    <h3><label for="message">Edit this post: </label></h3>
-    <textarea name="message"></textarea>
+      <div class="button">
+        <input type="submit" value="Edit" />
+      </div>
+    </form>
+
+    <form action='' method='POST'>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type='hidden' name='post_id' value='<%= @post_id %>'>
+      <h3><label for="delete">Delete this post: </label></h3>
+      <button class="button">DELETE</button>
+    </form>
   </div>
+<% else %>
+  <a href="/login" class="login-button">Log in to edit this post</a>
+<% end %>
 
-  <div class="button">
-    <input type="submit" value="Edit" />
-  </div>
-</form>
 
-<form action='' method='POST'>
-  <input type="hidden" name="_method" value="DELETE">
-  <input type='hidden' name='post_id' value='<%= @post_id %>'>
-  <h3><label for="delete">Delete this post: </label></h3>
-  <button class="button">DELETE</button>
-</form>
-</div>
-
-<h2>Return to <a href="/<%= @story[0]['id']%>"><%= @story[0]['title'] %></a></h2>
 

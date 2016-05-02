@@ -7,10 +7,13 @@
   <div class="container">
     <nav class="top-nav">
         <ul>
-            <li><a href="/">Home</a></li><!--
-         --><li><a href="#">Search</a></li><!--
-         --><li><a href="#">Profile</a></li><!--
-         --><li><a href="#">Logout</a></li>
+            <li><a href="/">Home</a></li>
+            <% if login? %>
+            <li><a href="/profile/<%= username %>"><%= username.capitalize %>'s Profile</a></li>
+            <li><a href="/logout">Sign Out</a></li>
+            <% else %>
+            <li><a href="/login">Login</a></li>
+            <% end %>
         </ul>
     </nav>
     <header>

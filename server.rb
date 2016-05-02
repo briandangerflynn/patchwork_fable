@@ -1,28 +1,104 @@
 require 'pg'
 require "pry"
 require "better_errors"
+require "bcrypt"
 
 module Patchwork
   class Server < Sinatra::Base
     set :method_override, true
+    set :sessions, true
 
     configure :development do
       use BetterErrors::Middleware
       BetterErrors.application_root = __dir__
     end
 
+    helpers do
+
+      def login?
+        if session[:username].nil?
+          return false
+        else
+          return true
+        end
+      end
+
+      def username
+        return session[:username]
+      end
+
+    end
+
+# shows signup page
+    get "/signup" do
+      erb :signup
+    end
+
+# allows user to create an account
+
+    post "/signup" do
+      email = params[:email]
+      session[:username] = params[:username]
+      password = BCrypt::Password::create(params[:password])
+
+      conn.exec_params("INSERT INTO user_info (email, username, password) VALUES ($1, $2, $3)", [email, session[:username], password])
+
+      redirect "/"
+    end
+
+# allows user to log in to an existing account
+
+    get "/login" do
+      erb :login
+    end
+
+    post "/login" do
+      @email = params[:email]
+      @password = params[:password]
+
+      @user = conn.exec(
+        "SELECT * FROM user_info WHERE email=$1 LIMIT 1",
+        [@email]
+      ).first
+
+      if @user && BCrypt::Password::new(@user["password"]) == params[:password]
+        session[:username] = @user['username']
+        redirect to("/")
+      else
+        redirect to("/login")
+      end
+    end
+
+# allows users to visit their profile
+
+  get "/profile/:name" do
+    @name = params[:name].to_s
+    @info = conn.exec("SELECT * FROM user_info WHERE username = '#{@name}'")
+    erb :profile
+  end
+
+# allows users to log out
+
+    get "/logout" do
+      session.clear
+      redirect to("/")
+    end
+
 # shows titles of stories
 
     get "/" do
-      @fables = conn.exec("SELECT * FROM fable;")
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username;")
+
       erb :index
     end
 
 # add new story
 
     post "/" do
+      @username = username
       @new_story = params[:title]
-      conn.exec_params("INSERT INTO fable (title, user_id) VALUES ($1, $2)", [@new_story, "1"])
+      @description = params[:description]
+      conn.exec_params("INSERT INTO fable (title, description, author) VALUES ($1, $2, $3)", [@new_story, @description, @username])
       @submitted = true
       redirect to("/")
     end
@@ -42,10 +118,10 @@ module Patchwork
 
     post "/:fable_id" do
       @id = params[:fable_id].to_i
-
+      @author = username
       @new_post = params[:message]
 
-      conn.exec_params("INSERT INTO posts (message, user_id, fable_id) VALUES ($1, $2, $3)", [@new_post, "1", @id])
+      conn.exec_params("INSERT INTO posts (message, author, fable_id) VALUES ($1, $2, $3)", [@new_post, @author, @id])
 
       @submitted = true
 

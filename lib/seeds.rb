@@ -18,6 +18,7 @@ conn.exec("DROP TABLE IF EXISTS user_info CASCADE")
 conn.exec("CREATE TABLE user_info(
     id SERIAL PRIMARY KEY,
     username VARCHAR(255),
+    password VARCHAR(255),
     email VARCHAR(255)
   )"
 )
@@ -30,7 +31,8 @@ conn.exec("DROP TABLE IF EXISTS fable CASCADE")
 conn.exec("CREATE TABLE fable(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
-    user_id INTEGER REFERENCES user_info(id)
+    author VARCHAR(255),
+    description TEXT NOT NULL
   )"
 )
 # end
@@ -40,33 +42,35 @@ conn.exec("DROP TABLE IF EXISTS posts CASCADE")
 
 conn.exec("CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
+    author VARCHAR(255),
     message TEXT NOT NULL,
-    user_id INTEGER REFERENCES user_info(id),
     fable_id INTEGER REFERENCES fable(id)
   )"
 )
 # end
 
 # creates fake data for production testing
-conn.exec("INSERT INTO user_info (username, email) VALUES (
+conn.exec("INSERT INTO user_info (username, password, email) VALUES (
     'Brian',
+    'password',
     'bdflynny@gmail.com'
   )"
 )
 
-conn.exec("INSERT INTO fable (title, user_id) VALUES (
+conn.exec("INSERT INTO fable (title, author, description) VALUES (
     'Dragon Story',
-    1
+    'Brian',
+    'A story about a fat dragon'
   )"
 )
 
-conn.exec("INSERT INTO posts (message, user_id, fable_id) VALUES (
+conn.exec("INSERT INTO posts (author, message, fable_id) VALUES (
+    'Brian',
     'Once upon a time, there was a lazy dragon...',
-    1,
     1
   ),(
+    'Brian',
     'that dragon liked to eat ramen noodles until he fell asleep!',
-    1,
     1
   )"
 )

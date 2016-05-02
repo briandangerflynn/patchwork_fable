@@ -21,7 +21,7 @@ nav {
 
 .top-nav li {
   float: left;
-  margin-left: 15px;
+  margin-left: 25px;
   list-style: none;
 
 }
@@ -110,4 +110,13 @@ a {
   text-decoration: none;
 }
 
+.login-button {
+  padding: 10px;
+  border: 2px solid #49274A;
+  background-color: #94618e;
+  color: white;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
 

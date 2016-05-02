@@ -8,16 +8,20 @@
   </a>
 <% end %>
 
-<form class="post" action="" method="post">
+<% if login? %>
+  <form class="post" action="" method="post">
 
-    <div>
-      <h3><label for="message">Add to the story: </label></h3>
-      <textarea name="message"></textarea>
-    </div>
+      <div>
+        <h3><label for="message">Add to the story: </label></h3>
+        <textarea name="message"></textarea>
+      </div>
 
-    <div class="button">
-      <input type="submit" value="Submit" />
-    </div>
+      <div class="button">
+        <input type="submit" value="Submit" />
+      </div>
 
-</form>
+  </form>
+<% else %>
+  <a href="/login" class="login-button">Log in to add to this story</a>
+<% end %>
 

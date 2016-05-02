@@ -107,6 +107,30 @@ module Patchwork
       redirect to("/")
     end
 
+# view fantasy fables
+    get "/fantasy" do
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'fantasy';").to_a
+      erb :fantasy
+    end
+
+# view horror fables
+    get "/horror" do
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'horror';").to_a
+      erb :horror
+    end
+
+# view comedy fables
+    get "/comedy" do
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'comedy';").to_a
+      erb :comedy
+    end
+
+# view sci-fi fables
+    get "/sci-fi" do
+      @fables = conn.exec("SELECT * FROM fable JOIN user_info ON fable.author = user_info.username WHERE category = 'sci-fi';").to_a
+      erb :scifi
+    end
+
 
 # view posts making up selected story
 

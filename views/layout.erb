@@ -9,7 +9,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <% if login? %>
-            <li><a href="/profile/<%= username %>"><%= username.capitalize %>'s Profile</a></li>
+            <li><a href="/profile/<%= username %>"><%= username %>'s Profile</a></li>
             <li><a href="/logout">Sign Out</a></li>
             <% else %>
             <li><a href="/login">Login</a></li>

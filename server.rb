@@ -5,15 +5,16 @@ require "pry"
 
 module Patchwork
   require "bcrypt"
+  require "better_errors"
   class Server < Sinatra::Base
     set :method_override, true
     set :sessions, true
 
 
-    # configure :development do
-    #   use BetterErrors::Middleware
-    #   BetterErrors.application_root = __dir__
-    # end
+    configure :development do
+      use BetterErrors::Middleware
+      BetterErrors.application_root = __dir__
+    end
 
     helpers do
 

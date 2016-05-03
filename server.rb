@@ -32,6 +32,11 @@ module Patchwork
 
     end
 
+# about the app page
+    get "/about" do
+      erb :about
+    end
+
 # shows signup page
     get "/signup" do
       erb :signup

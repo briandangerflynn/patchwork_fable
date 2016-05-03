@@ -3,6 +3,7 @@ body{
   margin: 0;
   font-family: "cardo";
   background-color: #f4decb;
+  font-size: 4vmin;
 }
 
 .container {
@@ -126,7 +127,7 @@ a {
   margin-top: 10px;
 }
 
-/* @media only screen
+@media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
@@ -143,9 +144,9 @@ h1 {
 
 @media (max-width: 720px) {
 
-h1 {
-  font-size: 36px;
-} */
+.post {
+  width: 75%;
+}
 
 
 }

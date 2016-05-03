@@ -9,9 +9,9 @@
     <p><%= @name[0]['username']%> hasn't created any stories yet.</p>
   </div>
 <% else %>
-  <% @fables.each do |post| %>
+  <% @fables.each do |fable| %>
     <div class="post">
-      <p><%= post['message'] %></p>
+      <a href="/<%= fable['id'] %>"><p><%= fable['title'] %></p></a>
     </div>
   <% end %>
 <% end %>

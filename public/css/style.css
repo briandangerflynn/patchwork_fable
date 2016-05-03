@@ -40,7 +40,7 @@ nav ul {
 
 header {
   /* border-top: 3px solid white; */
-  height: 250px;
+  height: 32vmin;
   background-color: #94618e;
   padding: 0;
   margin: 0;
@@ -51,7 +51,7 @@ h1 {
   padding: 0;
   margin: 0;
   font-family: '1 Harrington M', arial, serif;
-  font-size: 96px;
+  font-size: 10vmin;
   font-weight: bold;
   padding-top: 40px;
   color: white;
@@ -59,7 +59,7 @@ h1 {
 
 h4 {
   color: #49274A;
-  font-size: 36px;
+  font-size: 4vmin;
   margin-top: 0px;
 }
 
@@ -125,4 +125,30 @@ a {
   display: inline-block;
   margin-top: 10px;
 }
+
+/* @media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+h1 {
+  font-size: 36px;
+}
+
+
+
+
+}
+
+@media (max-width: 720px) {
+
+h1 {
+  font-size: 36px;
+} */
+
+
+}
+
+
 

@@ -201,7 +201,7 @@ module Patchwork
 
     def conn
         if ENV["RACK_ENV"] == "production"
-            PG.connect(
+            @db||= PG.connect(
                 dbname: ENV["POSTGRES_DB"],
                 host: ENV["POSTGRES_HOST"],
                 password: ENV["POSTGRES_PASS"],

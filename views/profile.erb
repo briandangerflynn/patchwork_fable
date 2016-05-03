@@ -27,6 +27,8 @@
   <% @posts.each do |post| %>
     <div class="post">
       <p><%= post['message'] %></p>
+      <p><a href="/<%= post['fable_id'] %>/<%= post['id'] %>">Go to Post</a> | <a href="/<%= post['fable_id'] %>">Go to Story</a>
+      </p>
     </div>
   <% end %>
 <% end %>

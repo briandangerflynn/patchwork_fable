@@ -1,3 +1,35 @@
-<div class="post">
-  <h3>Profile page for <%= @info[0]['username']%> </h3>
-</div>
+
+<h2>Profile page for <%= @name[0]['username']%> </h2>
+<hr>
+
+
+<h3>Stories by <%= @name[0]['username']%></h3>
+<% if @fables.length == 0 %>
+  <div class="post">
+    <p><%= @name[0]['username']%> hasn't created any stories yet.</p>
+  </div>
+<% else %>
+  <h3>Stories by <%= @name[0]['username']%></h3>
+  <% @fables.each do |post| %>
+    <div class="post">
+      <p><%= post['message'] %></p>
+    </div>
+  <% end %>
+<% end %>
+
+
+<h3>Posts by <%= @name[0]['username']%></h3>
+<% if @posts.length == 0 %>
+  <div class="post">
+    <p><%= @name[0]['username']%> hasn't created any posts yet.</p>
+  </div>
+<% else %>
+
+  <% @posts.each do |post| %>
+    <div class="post">
+      <p><%= post['message'] %></p>
+    </div>
+  <% end %>
+<% end %>
+
+

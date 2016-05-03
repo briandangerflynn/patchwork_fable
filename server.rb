@@ -44,16 +44,26 @@ module Patchwork
       session[:username] = params[:username]
       password = BCrypt::Password::create(params[:password])
 
-      conn.exec_params("INSERT INTO user_info (email, username, password) VALUES ($1, $2, $3)", [email, session[:username], password])
+      user_emails = conn.exec("SELECT email FROM user_info").to_a
+      print user_emails
 
-      redirect "/"
+      if user_emails.include? "#{email}"
+        redirect "/signup"
+        "An account already exists with this email. Please log into that account or create a new account with a different email."
+      else
+        conn.exec_params("INSERT INTO user_info (email, username, password) VALUES ($1, $2, $3)", [email, session[:username], password])
+
+        redirect "/"
+      end
     end
 
-# allows user to log in to an existing account
+# shows login page
 
     get "/login" do
       erb :login
     end
+
+# allows user to log in to an existing account
 
     post "/login" do
       @email = params[:email]
@@ -69,16 +79,19 @@ module Patchwork
         redirect to("/")
       else
         redirect to("/login")
+        "wrong email / password combination"
       end
     end
 
 # allows users to visit their profile
 
-  get "/profile/:name" do
-    @name = params[:name].to_s
-    @info = conn.exec("SELECT * FROM user_info WHERE username = '#{@name}'")
-    erb :profile
-  end
+    get "/profile/:name" do
+      @getname = params[:name].to_s
+      @name = conn.exec("SELECT * FROM user_info WHERE username = '#{@getname}'")
+      @fables = conn.exec("SELECT * FROM user_info JOIN fable ON user_info.username = fable.author WHERE user_info.username = '#{@getname}';").to_a
+      @posts = conn.exec("SELECT * FROM user_info JOIN posts ON user_info.username = posts.author WHERE user_info.username = '#{@getname}'").to_a
+      erb :profile
+    end
 
 # allows users to log out
 

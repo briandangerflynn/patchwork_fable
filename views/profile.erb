@@ -9,7 +9,6 @@
     <p><%= @name[0]['username']%> hasn't created any stories yet.</p>
   </div>
 <% else %>
-  <h3>Stories by <%= @name[0]['username']%></h3>
   <% @fables.each do |post| %>
     <div class="post">
       <p><%= post['message'] %></p>

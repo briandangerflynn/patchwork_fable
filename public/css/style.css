@@ -3,7 +3,6 @@ body{
   margin: 0;
   font-family: "cardo";
   background-color: #f4decb;
-  font-size: 4vmin;
 }
 
 .container {
@@ -129,12 +128,16 @@ a {
 
 @media only screen
   and (min-device-width: 375px)
-  and (max-device-width: 667px)
+  and (max-device-width: 720px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
 
-h1 {
-  font-size: 36px;
+.post-text {
+  font-size: 16px;
+}
+
+.post {
+  width: 75%;
 }
 
 
@@ -144,9 +147,14 @@ h1 {
 
 @media (max-width: 720px) {
 
+.post-text {
+  font-size: 16px;
+}
+
 .post {
   width: 75%;
 }
+
 
 
 }

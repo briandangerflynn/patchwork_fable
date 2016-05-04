@@ -50,7 +50,7 @@ header {
 h1 {
   padding: 0;
   margin: 0;
-  font-family: '1 Harrington M', arial, serif;
+  font-family: '1 Harrington M', arial;
   font-size: 10vmin;
   font-weight: bold;
   padding-top: 40px;
@@ -131,12 +131,17 @@ a {
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
 
-nav {
-  height: 75px;
-}
 
 body {
   font-size: 36px;
+}
+
+nav {
+  height: 100px;
+}
+
+h1 {
+  padding-top: 50px;
 }
 
 .post {
@@ -148,7 +153,7 @@ body {
 
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
 
 .post-text {
   font-size: 24px;
@@ -160,7 +165,7 @@ body {
 
 
 
-}
+} */
 
 
 

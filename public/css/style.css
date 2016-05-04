@@ -140,6 +140,11 @@ nav {
   height: 100px;
 }
 
+.top-nav a {
+  font-size: 48px;
+  padding-right: 10px;
+}
+
 h1 {
   padding-top: 50px;
 }
@@ -154,19 +159,37 @@ h1 {
 
 }
 
-/* @media (max-width: 720px) {
+@media (max-width: 720px) {
 
-.post-text {
-  font-size: 24px;
+body {
+  font-size: 18px;
+}
+
+nav {
+  height: 75px;
+}
+
+.top-nav a {
+  font-size: 16px;
+}
+
+h1 {
+  padding-top: 50px;
+  font-size: 48px;
 }
 
 .post {
   width: 75%;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+header {
+  height: 200px;
 }
 
 
-
-} */
+}
 
 
 
